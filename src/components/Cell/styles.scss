@@ -1,0 +1,12 @@
+.Cell {
+  width: 30px;
+  height: 30px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 1px;
+  text-align: center;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
