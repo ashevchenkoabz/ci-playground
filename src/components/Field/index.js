@@ -1,5 +1,6 @@
 import React from 'react';
 import Field from  './../../classes/Field';
+import { FieldContext } from "../../contexts/FieldContext";
 
 import Column from "../Column";
 import './styles.scss';
@@ -11,8 +12,7 @@ export default class GameField extends React.Component {
 
         setTimeout(() => {
             const {field} = this.state;
-            field.fieldMap[2].splice(2,1);
-            this.setState({field: field})
+            console.log(field)
         }, 5000)
     }
 
@@ -26,11 +26,19 @@ export default class GameField extends React.Component {
         });
     }
 
+    performMove(fromCol, fromRow, toCol, toRow) {
+        const { field } = this.state;
+        field.performMove(fromRow, fromCol, toRow, toCol);
+        this.setState({ field })
+    }
+
     render() {
         const { field, width, height } = this.state;
         return (
             <div className="Field" style={{width: `${width}px`, height: `${height}px`}}>
-                {field.fieldMap.map((col, i) => <Column key={i} col={col} colIndex={i}/>)}
+                <FieldContext.Provider value={{ field, performMove: this.performMove.bind(this) }}>
+                    {field.fieldMap.map((col, i) =>  <Column key={i} col={col} colIndex={i}/>)}
+                </FieldContext.Provider>
             </div>
         );
     }

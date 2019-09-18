@@ -37,4 +37,29 @@ export default class Field {
         }
         return cell;
     }
+
+    performMove(fromCol, fromRow, toCol, toRow) {
+        // clone object using weird JS-way
+        const clone =  Object.assign(Object.create(Object.getPrototypeOf(this.fieldMap[fromRow][fromCol])), this.fieldMap[fromRow][fromCol]);
+        this.fieldMap[toRow][toCol].moveTo(fromRow, fromCol);
+        clone.moveTo(toRow, toCol);
+
+        // swap cells
+        this.fieldMap[fromRow][fromCol] = this.fieldMap[toRow][toCol];
+        this.fieldMap[toRow][toCol] = clone;
+    }
+
+    analyzeField() {
+        this.fieldMap.forEach((col) => {
+            col.forEach((cell) => {
+                if (!cell.insideMathchLine) {
+                    this.analyzeCell(cell);
+                }
+            })
+        })
+    }
+
+    analyzeCell(cell) {
+
+    }
 }
