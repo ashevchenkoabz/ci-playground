@@ -4,7 +4,7 @@ export default class Cell {
     constructor(col, row) {
         this.row = row;
         this.col = col;
-        this.insideMathchLine = false;
+        this.insideMatchLine = false;
         this.randomizeColor()
     }
 

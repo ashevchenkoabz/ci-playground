@@ -5,8 +5,13 @@
   cursor: pointer;
   margin: 1px;
   text-align: center;
+  transition: all 0.5s linear;
 
   &:hover {
     opacity: 0.8;
+  }
+
+  &.to-remove {
+    background-color: #b16a1a;
   }
 }

@@ -7,15 +7,6 @@ import './styles.scss';
 import {BASE_CELL_MARGIN, BASE_CELL_SIZE} from "../../constants";
 
 export default class GameField extends React.Component {
-    constructor() {
-        super();
-
-        setTimeout(() => {
-            const {field} = this.state;
-            console.log(field)
-        }, 5000)
-    }
-
     componentWillMount() {
         const { rows, cols } = this.props;
 
