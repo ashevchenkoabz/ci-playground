@@ -57,7 +57,6 @@ export default class App extends React.Component {
     render() {
         return (
             <div className="App">
-                <h1>Scapes</h1>
                 <GameField cols={10} rows={10} />
             </div>
         );
