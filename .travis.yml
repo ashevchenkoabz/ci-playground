@@ -1,15 +1,28 @@
 sudo: required
 services:
   - docker
-before_install:
-  - docker build -f Dockerfile.dev -t testing/react-scapes .
 jobs:
   include:
+      # unit tests
     - stage: tests
       name: Unit Tests
-      script: docker run -e CI=true testing/react-scapes npm run test
-    - stage: deploy
-      script: echo "Deploy placeholder"
+      script:
+        - docker build -f Dockerfile.dev -t testing/react-scapes .
+        - docker run -e CI=true testing/react-scapes npm run test
+
+      # development deploy
+    - stage: deploy+development
+      script: echo "Deploy placeholder development"
+      if: branch = development
+
+      # staging deploy
+    - stage: deploy+production
+      script: echo "Deploy placeholder staging"
+      if: branch = staging
+
+      # production deploy
+    - stage: deploy+production
+      script: echo "Deploy placeholder production"
       if: branch = master
 branches:
   only:
