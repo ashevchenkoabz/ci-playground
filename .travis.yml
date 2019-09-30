@@ -5,3 +5,7 @@ before_install:
   - docker build -f Dockerfile.dev -t testing/react-scapes .
 script:
   - docker run -e CI=true testing/react-scapes npm run test
+branches:
+  only:
+    - master
+    - development
