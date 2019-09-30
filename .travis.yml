@@ -10,10 +10,7 @@ jobs:
       script: docker run -e CI=true testing/react-scapes npm run test
     - stage: deploy
       script: echo "Deploy placeholder"
-stages:
-  - tests
-  - name: deploy
-    if: branch = master
+      if: branch = master
 branches:
   only:
     - master
