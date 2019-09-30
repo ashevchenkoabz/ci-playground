@@ -3,21 +3,12 @@ services:
   - docker
 jobs:
   include:
-    - stage: build+dev
-      name: Build container
-      script: docker build -f Dockerfile.dev -t testing/react-scapes .
-      if: branch != master
-
-      # build production
-    - stage: build+production
-      name: Build container
-      script: docker build -t production/react-scapes .
-      if: branch = master
-
       # unit tests
     - stage: tests
       name: Unit Tests
-      script: docker run -e CI=true testing/react-scapes npm run test
+      script:
+        - docker build -f Dockerfile.dev -t testing/react-scapes .
+        - docker run -e CI=true testing/react-scapes npm run test
 
       # development deploy
     - stage: deploy+development
