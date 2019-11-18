@@ -20,7 +20,7 @@ export default class GameField extends React.Component {
     performMove(fromCol, fromRow, toCol, toRow) {
         const { field } = this.state;
         field.performMove(fromRow, fromCol, toRow, toCol);
-        this.setState({ field })
+        this.setState({ field });
     }
 
     render() {

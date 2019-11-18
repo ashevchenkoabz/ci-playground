@@ -16,7 +16,7 @@ export default class App extends React.Component {
             .attr('width', (BASE_CELL_SIZE + 2 * BASE_CELL_MARGIN) * width)
             .attr('height', (BASE_CELL_SIZE + 2 * BASE_CELL_MARGIN) * height)
             .attr('fill', d3.color('#dedede'))
-            .append('g')
+            .append('g');
 
         function dragstarted(d) {
             d3.select(this).raise().attr("stroke", "black");
@@ -51,7 +51,7 @@ export default class App extends React.Component {
             });
 
         svg.selectAll('circle')
-            .call(dragListeners)
+            .call(dragListeners);
     }
 
     render() {
